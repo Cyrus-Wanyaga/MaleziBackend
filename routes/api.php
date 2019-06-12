@@ -19,3 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/postSignUp','UserController@postSignUp')->name('postSignUp');
 Route::post('/Login','UserController@Login')->name('Login');
+
+Route::get('/getArticles','AndroidController@GetArticles')->name('getArticles');
+Route::post('/PostArticle','AndroidController@PostArticle')->name('PostArticle');
+Route::post('/ParentLogIn','AndroidController@ParentLogIn')->name('ParentLogIn');
+Route::post('/ParentSignUp','AndroidController@ParentSignUp')->name('ParentSignUp');

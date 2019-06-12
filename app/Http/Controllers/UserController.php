@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Child;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -95,6 +96,35 @@ class UserController extends Controller
 
         return json_encode($response);
 
+    }
+
+
+    public function RegisterChild(Request $request){
+
+        $data = new Child();
+        $data->name = $request['name'];
+        $data ->parentId = $request['parentId'];
+        $data->dateOfBirth = $request['dateOfBirth'];
+        $data->gender = $request['gender'];
+        $data->age = $request['age'];
+
+
+
+        if ($data->save()){
+            $response = array(
+                'error' => false,
+                'error_msg' => 'Child Registered'
+            );
+        } else{
+
+            $response = array(
+                'error' => true,
+                'error_msg' => 'Child Not Registered'
+            );
+
+        }
+
+        return json_encode( $response);
     }
 
 }
